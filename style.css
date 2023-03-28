@@ -43,3 +43,13 @@
     width: 200px;
     border-radius: 2%;
   }
+
+  button {
+    margin-top: 80px;
+    padding: 8px;
+    border-radius:2%;
+    font-size: large;
+    background-color: black;
+    color: white;
+    width: 20%;
+  }
