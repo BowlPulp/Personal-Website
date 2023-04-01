@@ -40,8 +40,10 @@
   
   /* Style the image inside the centered container, if needed */
   .centered img {
-    width: 200px;
+    width: 280px;
+    margin-top: -16%;
     border-radius: 2%;
+    margin-bottom: 20px;
   }
 
   button {
@@ -49,7 +51,48 @@
     padding: 8px;
     border-radius:2%;
     font-size: large;
-    background-color: black;
+    background-color: #302c2c;
     color: white;
-    width: 20%;
+    width: 40%;
+    transition: 0.2s;
   }
+  
+  button:hover{
+    color: #b3cf32;
+  }
+
+  button:active{
+    background-color: #b3cf32;
+    border: 1px #000000 solid;
+  }
+  .emailbtn {
+      margin-top: 40px;
+      padding: 8px;
+      margin-bottom: 40px;
+      border-radius:2%;
+      font-size: large;
+      background-color: #302c2c;
+      color: white;
+      width: 68%;
+  }
+
+.social-icon {
+  color: #302c2c;
+  transition: 0.2s;
+  text-decoration: none;
+  padding: 8px;
+  
+}
+
+.social-icon:hover {
+  color: #b3cf32;
+}
+
+p {
+  color: #302c2c;
+}
+
+h2 {
+  color: #302c2c;
+}
+
