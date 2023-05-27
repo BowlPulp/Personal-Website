@@ -1,6 +1,6 @@
 *{
-    margin: 0vh;
-    padding:0vh;
+    margin:0;
+    padding:0;
   }
 
   /* Split the screen in half */
@@ -11,7 +11,6 @@
     z-index: 1;
     top: 0;
     overflow-x: hidden;
-    padding-top: 20px;
   }
   
   /* Control the left side */
@@ -30,7 +29,7 @@
   
   /* If you want the content centered horizontally and vertically */
   .centered {
-    font-family:'Open Sans';font-size: 22px;
+    font-family:'Open Sans';font-size: 2.5vh;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,15 +39,15 @@
   
   /* Style the image inside the centered container, if needed */
   .centered img {
-    width: 280px;
-    margin-top: -16%;
+    width: 35vh;
+    margin-top:10%;
     border-radius: 2%;
-    margin-bottom: 20px;
+    margin-bottom: 2vh;
   }
 
   button {
-    margin-top: 80px;
-    padding: 8px;
+    margin-top: 8vh;
+    padding: 1vh;
     border-radius:2%;
     font-size: large;
     background-color: #302c2c;
@@ -66,9 +65,9 @@
     border: 1px #000000 solid;
   }
   .emailbtn {
-      margin-top: 40px;
-      padding: 8px;
-      margin-bottom: 40px;
+      margin-top: 3vh;
+      padding: 1vh;
+      margin-bottom: 2vh;
       border-radius:2%;
       font-size: large;
       background-color: #302c2c;
@@ -81,18 +80,12 @@
   transition: 0.2s;
   text-decoration: none;
   padding: 8px;
-  
 }
 
 .social-icon:hover {
   color: #b3cf32;
 }
 
-p {
+p,h2 {
   color: #302c2c;
 }
-
-h2 {
-  color: #302c2c;
-}
-
