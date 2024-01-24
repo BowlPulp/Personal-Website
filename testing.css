@@ -16,7 +16,7 @@ body {
   line-height: 1.7;
   position: relative;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
 }
 
 /* header {
@@ -131,7 +131,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  overflow: auto;
   color: white;
 }
 
@@ -272,6 +272,24 @@ article {
 
 
 
-button:hover{
-  color: #b3cf32;
+a,button:hover{
+  color: rgb(229,154,114) !important;
 }
+
+button:active{
+  background-color:rgb(255, 255, 255);
+  border: 1px #000000 solid;
+}
+
+  
+/* .social-icon {
+  color: #302c2c;
+  transition: 0.2s;
+  text-decoration: none;
+  padding: 8px;
+} */
+
+/* #my{
+  zoom: 100%;
+  } */
+
