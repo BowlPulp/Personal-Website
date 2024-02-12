@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remaining Balance Tracker</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Remaining Balance Tracker</h1>
+
+    <form id="balanceForm" onsubmit="updateBalance(); return false;">
+        <label for="date">Date (MM/DD):</label>
+        <input type="text" id="date" placeholder="MM/DD" required pattern="^(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])$">
+
+        <label for="slot">Slot:</label>
+        <select id="slot" required>
+            <option value="main">Main Tsunami</option>
+            <option value="secondary">Secondary Tsunami</option>
+        </select>
+
+        <label for="inputValue">Input Value:</label>
+        <input type="number" id="inputValue" required>
+
+        <button type="submit">Update Balance</button>
+    </form>
+
+    <div id="remainingBalances"></div>
+    <p id="message"></p>
+
+    <script>
+        // Function to retrieve data from localStorage
+        function getLocalStorageData() {
+            const storedData = localStorage.getItem('remainingBalances');
+            return storedData ? JSON.parse(storedData) : {};
+        }
+
+        // Object to store remaining balances for each day and slot
+        let remainingBalances = getLocalStorageData();
+
+        function updateBalance() {
+            const date = document.getElementById('date').value;
+            const slot = document.getElementById('slot').value;
+            const inputValue = parseInt(document.getElementById('inputValue').value);
+
+            const key = `${date}_${slot}`;
+
+            // Initialize remaining balances for the date if not already present
+            if (!remainingBalances[date]) {
+                remainingBalances[date] = {
+                    main: 2000000,
+                    secondary: 2000000
+                };
+            }
+
+            // Determine which remaining balance to use based on the slot
+            let remainingBalance;
+            if (slot === 'main') {
+                remainingBalance = remainingBalances[date].main;
+            } else if (slot === 'secondary') {
+                remainingBalance = remainingBalances[date].secondary;
+            } else {
+                showMessage('Invalid slot selection');
+                return;
+            }
+
+            // Check if the input value is valid
+            if (inputValue <= 0) {
+                showMessage('Input value must be greater than 0');
+                return;
+            }
+
+            // Check if the input value is not greater than the remaining balance
+            if (inputValue > remainingBalance) {
+                showMessage('Not enough remaining balance');
+                return;
+            }
+
+            // Check if the slot has already been used for the date
+            if (remainingBalance === 0) {
+                showMessage(`Slot ${slot} has already been used for Date ${date}`);
+                return;
+            }
+
+            // Update remaining balance
+            remainingBalances[date][slot] -= inputValue;
+
+            // Update data in localStorage
+            localStorage.setItem('remainingBalances', JSON.stringify(remainingBalances));
+
+            // Update message and display remaining balance
+            showMessage(`Remaining balance updated for Date ${date}, Slot ${slot}`);
+            displayRemainingBalances();
+
+            // Check if the remaining balance is now 0 for this slot
+            if (remainingBalances[date][slot] === 0) {
+                showMessage(`Slot ${slot} has reached 0 for Date ${date}. Move to the next slot.`);
+            }
+        }
+
+        function showMessage(message) {
+            document.getElementById('message').textContent = message;
+        }
+
+        function displayRemainingBalances() {
+            const date = document.getElementById('date').value;
+            const remainingBalancesDiv = document.getElementById('remainingBalances');
+            remainingBalancesDiv.innerHTML = '';
+
+            if (remainingBalances[date]) {
+                for (const [slot, balance] of Object.entries(remainingBalances[date])) {
+                    const p = document.createElement('p');
+                    p.textContent = `Remaining Balance - ${capitalizeFirstLetter(slot)} for Date ${date}: ${balance}`;
+                    remainingBalancesDiv.appendChild(p);
+                }
+            }
+        }
+
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    </script>
+
+</body>
+</html>
