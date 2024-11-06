@@ -3,7 +3,7 @@ import { FiLogIn } from "react-icons/fi";
 
 const links = [
     { name: 'Bowlpulp - Brand Website', url: 'https://bowlpulp.com' },
-    { name: 'Github Profile Viewer', url: 'https://bowlpulp.github.io/Github-Profile-Viewer/' },
+    { name: 'GitPeek - Github Profile Viewer', url: 'https://git-peek-navy.vercel.app/' },
     { name: 'Image Tweak - Image Formatting Tool', url: 'https://image-tweak.vercel.app/' },
     // Add more links here
 ];
