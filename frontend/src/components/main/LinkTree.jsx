@@ -13,7 +13,7 @@ export default function LinkTree() {
         <div className="min-h-screen bg-gray-900 flex items-center justify-center p-6">
             <div className="w-full max-w-md text-center space-y-4 bg-gray-800 bg-opacity-80 p-8 rounded-xl shadow-xl">
                 <h1 className="text-5xl font-extrabold text-white mb-8 tracking-wide">
-                    Kartik Arora's <span className="text-green-300">Projects</span>
+                    My <span className="text-green-300">Projects</span>
                 </h1>
                 {links.map((link, index) => (
                     <a
