@@ -63,14 +63,17 @@ const Navbar = () => {
         {/* Mobile Menu */}
         {isOpen && (
           <div className="md:hidden">
-            <a href="/" className="block py-2 px-4 text-white hover:bg-blue-500">
-              Home
+            <a href="https://www.linkedin.com/in/kartikarora5832/" className="text-white hover:text-green-300">
+              Linkedin
             </a>
-            <a href="/features" className="block py-2 px-4 text-white hover:bg-blue-500">
-              Features
+            <a href="https://github.com/BowlPulp" className="text-white hover:text-green-300">
+              Github
             </a>
-            <a href="/contact" className="block py-2 px-4 text-white hover:bg-blue-500">
-              Contact
+            <a href="https://leetcode.com/u/BowlPulp/" className="text-white hover:text-green-300">
+              Leetcode
+            </a>
+            <a href="https://monkeytype.com/profile/BowlPulp" className="text-white hover:text-green-300">
+              MonkeyType
             </a>
           </div>
         )}
