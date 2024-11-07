@@ -22,7 +22,7 @@ const Navbar = () => {
             <a href="https://github.com/BowlPulp" className="text-white hover:text-green-300">
               Github
             </a>
-            <a href="https://leetcode.com/u/KartikArora5832/" className="text-white hover:text-green-300">
+            <a href="https://leetcode.com/u/BowlPulp/" className="text-white hover:text-green-300">
               Leetcode
             </a>
           </div>
