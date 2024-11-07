@@ -25,6 +25,9 @@ const Navbar = () => {
             <a href="https://leetcode.com/u/BowlPulp/" className="text-white hover:text-green-300">
               Leetcode
             </a>
+            <a href="https://monkeytype.com/profile/BowlPulp" className="text-white hover:text-green-300">
+              MonkeyType
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
