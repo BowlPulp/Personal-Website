@@ -6,7 +6,7 @@ function ViewCounter() {
   
   useEffect(() => {
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const socket = new WebSocket(`${protocol}://localhost:3000`);
+    const socket = new WebSocket('wss://projects-osst.onrender.com/');
 
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
