@@ -17,7 +17,7 @@ const getViewCount = () => {
     const { views } = JSON.parse(data);
     return views;
   } catch (err) {
-    console.error(err);
+    console.error('Error reading views:', err);
     return 0; // Return 0 if file doesn't exist or there's an error
   }
 };
@@ -30,6 +30,11 @@ const updateViewCount = () => {
   return newViews;
 };
 
+// Ensure `views.json` exists to avoid issues
+if (!fs.existsSync(viewsFilePath)) {
+  fs.writeFileSync(viewsFilePath, JSON.stringify({ views: 0 }));
+}
+
 // Create HTTP server and integrate with WebSocket
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
@@ -38,18 +43,13 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected via WebSocket');
   
-  // Send the current view count when a client connects
-  ws.send(JSON.stringify({ views: getViewCount() }));
+  // Increment view count when a client connects
+  const updatedViews = updateViewCount();
 
-  // Broadcast updated view count to all clients whenever it changes
-  ws.on('message', (message) => {
-    if (message === 'update') {
-      const updatedViews = updateViewCount();
-      wss.clients.forEach((client) => {
-        if (client.readyState === WebSocket.OPEN) {
-          client.send(JSON.stringify({ views: updatedViews }));
-        }
-      });
+  // Send updated view count to all connected clients
+  wss.clients.forEach((client) => {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(JSON.stringify({ views: updatedViews }));
     }
   });
 
@@ -58,17 +58,10 @@ wss.on('connection', (ws) => {
   });
 });
 
-// Endpoint to get and update the view count for HTTP requests
+// Endpoint to get the current view count for HTTP requests
 app.get('/views', (req, res) => {
-  const views = updateViewCount();
+  const views = getViewCount();
   res.json({ views });
-
-  // Notify WebSocket clients of the updated view count
-  wss.clients.forEach((client) => {
-    if (client.readyState === WebSocket.OPEN) {
-      client.send(JSON.stringify({ views }));
-    }
-  });
 });
 
 // Start the server

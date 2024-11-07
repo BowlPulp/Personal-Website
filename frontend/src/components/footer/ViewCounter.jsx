@@ -5,15 +5,18 @@ function ViewCounter() {
   const [views, setViews] = useState('Loading...');
   
   useEffect(() => {
-    const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
     const socket = new WebSocket('wss://projects-osst.onrender.com/');
+
+    socket.onopen = () => {
+      console.log('WebSocket connected');
+    };
 
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
+      console.log('Received data:', data); // Debug log
       setViews(data.views);
     };
 
-    socket.onopen = () => console.log('WebSocket connected');
     socket.onclose = () => console.log('WebSocket disconnected');
     socket.onerror = (error) => console.error('WebSocket error:', error);
 
@@ -79,7 +82,7 @@ const Drip = ({ left, height, delay }) => {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M5.4 0H0V5.4C0 2.41765 2.41766 0 5.4 0Z"
+            d="M5.4 0H0V5.4C0 2.41766 0 5.4 0Z"
             className="fill-green-300 transition-colors group-hover:fill-green-400"
           />
         </g>
@@ -107,7 +110,7 @@ const Drip = ({ left, height, delay }) => {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M5.4 0H0V5.4C0 2.41765 2.41766 0 5.4 0Z"
+            d="M5.4 0H0V5.4C0 2.41765 0 5.4 0Z"
             className="fill-green-300 transition-colors group-hover:fill-green-400"
           />
         </g>
