@@ -32,7 +32,7 @@ function ViewCounter() {
 
 const WetPaintButton = ({ views }) => {
   return (
-    <button className="group relative rounded bg-green-300 px-4 py-2.5 font-semibold text-white transition-colors hover:bg-green-400">
+    <button className="group relative rounded bg-green-300 px-4 py-2.5 font-semibold text-inherit transition-colors hover:bg-green-400">
       Views: {views}
       <Drip left="10%" height={24} delay={0.5} />
       <Drip left="30%" height={20} delay={3} />
