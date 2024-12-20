@@ -1,39 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-function ViewCounter() {
-  const [views, setViews] = useState('Loading...');
-  
+function EmojiDisplay() {
+  const [emoji, setEmoji] = useState('');  // State to store the emoji
+
+  // Calculate time and determine emoji (morning or night)
   useEffect(() => {
-    const socket = new WebSocket('wss://projects-osst.onrender.com/');
+    // Get the current hour of the day
+    const currentHour = new Date().getHours();
 
-    socket.onopen = () => {
-      console.log('WebSocket connected');
-    };
+    // Determine if it's morning or night
+    const isMorning = currentHour >= 6 && currentHour < 18;  // Morning from 6 AM to 6 PM
+    const emojiData = isMorning ? "I can do it!" : "am tired.";  // Sun for morning, Moon for night
 
-    socket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      console.log('Received data:', data); // Debug log
-      setViews(data.views);
-    };
-
-    socket.onclose = () => console.log('WebSocket disconnected');
-    socket.onerror = (error) => console.error('WebSocket error:', error);
-
-    return () => socket.close();
-  }, []);
+    setEmoji(emojiData);  // Set the emoji based on the time
+  }, []);  // Only run once when the component mounts
 
   return (
     <div className="fixed bottom-10 right-10 z-50">
-      <WetPaintButton views={views} />
+      <WetPaintButton emoji={emoji} />
     </div>
   );
 }
 
-const WetPaintButton = ({ views }) => {
+const WetPaintButton = ({ emoji }) => {
   return (
     <button className="group relative rounded bg-green-300 px-4 py-2.5 font-semibold text-inherit transition-colors hover:bg-green-400">
-      Views: {views}
+      {emoji} {/* Display the emoji here */}
       <Drip left="10%" height={24} delay={0.5} />
       <Drip left="30%" height={20} delay={3} />
       <Drip left="57%" height={10} delay={4.25} />
@@ -110,7 +103,7 @@ const Drip = ({ left, height, delay }) => {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M5.4 0H0V5.4C0 2.41765 0 5.4 0Z"
+            d="M5.4 0H0V5.4C0 2.41766 0 5.4 0Z"
             className="fill-green-300 transition-colors group-hover:fill-green-400"
           />
         </g>
@@ -138,4 +131,4 @@ const Drip = ({ left, height, delay }) => {
   );
 };
 
-export default ViewCounter;
+export default EmojiDisplay;
