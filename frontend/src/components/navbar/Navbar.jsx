@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo / Title */}
-          <div className="text-white text-2xl font-bold">Kartikarora.co</div>
+          <div className="text-white text-2xl font-bold">Kartikarora.tech</div>
 
           {/* Desktop Links */}
           <div className="hidden md:flex space-x-6">
