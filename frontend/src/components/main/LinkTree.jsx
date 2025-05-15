@@ -6,7 +6,8 @@ const links = [
     { name: 'GitPeek - Github Profile Viewer', url: 'https://git-peek-navy.vercel.app/' },
     { name: 'Image Tweak - Image Formatting Tool', url: 'https://image-tweak.vercel.app/' },
     { name: 'ChitkaraConnect - College Tool(Mern)', url: 'https://chitkara-connect.vercel.app/' },
-    { name: 'HODLSync - Crypto Portfolio Tracker - Coming Soon!!', url: 'https://hodlsync.com/' },
+    { name: 'HODLSync - Crypto Portfolio Tracker', url: 'https://hodlsync.com/' },
+     { name: 'CloutNine Agency', url: 'https://cloutnine.in/' },
     // Add more links here
 ];
 
