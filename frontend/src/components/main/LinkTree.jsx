@@ -7,7 +7,10 @@ const links = [
     { name: 'Image Tweak - Image Formatting Tool', url: 'https://image-tweak.vercel.app/' },
     { name: 'ChitkaraConnect - College Tool(Mern)', url: 'https://chitkara-connect.vercel.app/' },
     { name: 'HODLSync - Crypto Portfolio Tracker', url: 'https://hodlsync.com/' },
-     { name: 'CloutNine Agency', url: 'https://cloutnine.in/' },
+    { name: 'CloutNine Agency - Social Media Brand', url: 'https://cloutnine.in/' },
+    { name: 'SandNSea Agency - Real Estate Showcase', url: 'https://sandnsearealty.vercel.app/' },
+    { name: 'TWOWS - Discord Trading Server', url: 'https://twowsofficial.vercel.app/' },
+    { name: 'CollegeCMS - Cluster Management System', url: 'https://github.com/BowlPulp/CollegeCMS' },
     // Add more links here
 ];
 
